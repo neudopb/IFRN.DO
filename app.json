@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "ifrndo",
+    "slug": "ifrndo",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "ifrndo"
+}

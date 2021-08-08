@@ -32,17 +32,11 @@ export default StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: MyTheme.colors.primary,
     },
-    containerInput: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row',
-        transform: [{translateY:-30}],
-    },
     containerBody: {
         flex: 1,
         marginTop: 20,
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         backgroundColor: MyTheme.colors.background,
     },
     textHeader: {
@@ -60,23 +54,4 @@ export default StyleSheet.create({
         fontSize: 16,
         color: MyTheme.colors.white,
     },
-    inputAdd: {
-        height: 60,
-        width: '75%',
-        paddingLeft: 20,
-        fontSize: 15,
-        borderTopLeftRadius: 7,
-        borderBottomLeftRadius: 7,
-        backgroundColor: MyTheme.colors.white,
-    },
-    btnInput: {
-        height: 60,
-        padding: 15,
-        justifyContent: 'center',
-        borderLeftWidth: 1,
-        borderTopRightRadius: 7,
-        borderBottomRightRadius: 7,
-        borderLeftColor: MyTheme.colors.gray2,
-        backgroundColor: MyTheme.colors.white,
-    }
 });

@@ -14,8 +14,7 @@ export function MyItem(props) {
                 />
                 <Text style={styles.txt}>{props.tarefa}</Text>
             </View>
-            
-            <TouchableOpacity style={styles.btn}>
+            <TouchableOpacity style={styles.btn} onPress={props.onPress}>
                 <AntDesign name="delete" size={24} color="black" />
             </TouchableOpacity>
         </View>
@@ -25,7 +24,7 @@ export function MyItem(props) {
 const styles = StyleSheet.create({
     viewItem: {
         height: 50,
-        width: '95%',
+        width: '80%',
         padding: 10,
         margin: 2,
         borderRadius: 10,
@@ -55,6 +54,6 @@ const styles = StyleSheet.create({
         textDecorationLine: 'line-through',
     },
     btn: {
-        padding: 15
+        padding: 15,
     },
 });

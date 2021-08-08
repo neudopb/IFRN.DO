@@ -20,45 +20,35 @@ export default StyleSheet.create({
         marginTop: 20,
         marginBottom: 70,
     },
-    inputLogin: {
-        height: 45,
-        width: '70%',
-        margin: 10,
-        borderRadius: 10,
-        paddingLeft: 20,
-        fontSize: 18,
-        backgroundColor: MyTheme.colors.white,
-    },
-    btn: {
-        height: 50,
-        width: '70%',
-        margin: 20,
-        borderRadius: 3,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: MyTheme.colors.gray
-    },
-    textBtn: {
-        fontSize: 20,
-        color: MyTheme.colors.white,
-    },
+    
+    
+    
     container: {
         flex: 1,
+        backgroundColor: MyTheme.colors.background,
     },
-    containerHomeHeader: {
-        flex: 1,
+    containerHeader: {
+        height: 175,
         justifyContent: 'center',
         backgroundColor: MyTheme.colors.primary,
     },
-    containerHomeBody: {
-        flex: 4,
-        alignItems: 'center',
+    containerInput: {
         justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        transform: [{translateY:-30}],
+    },
+    containerBody: {
+        flex: 1,
+        marginTop: 20,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
         backgroundColor: MyTheme.colors.background,
     },
     textHeader: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        alignItems: 'center',
         margin: 30,
     },
     tituloHome: {
@@ -67,7 +57,26 @@ export default StyleSheet.create({
         fontWeight: 'bold',
     },
     txtTarefas: {
-        fontSize: 15,
+        fontSize: 16,
         color: MyTheme.colors.white,
     },
+    inputAdd: {
+        height: 60,
+        width: '75%',
+        paddingLeft: 20,
+        fontSize: 15,
+        borderTopLeftRadius: 7,
+        borderBottomLeftRadius: 7,
+        backgroundColor: MyTheme.colors.white,
+    },
+    btnInput: {
+        height: 60,
+        padding: 15,
+        justifyContent: 'center',
+        borderLeftWidth: 1,
+        borderTopRightRadius: 7,
+        borderBottomRightRadius: 7,
+        borderLeftColor: MyTheme.colors.gray2,
+        backgroundColor: MyTheme.colors.white,
+    }
 });

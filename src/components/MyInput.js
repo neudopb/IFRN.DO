@@ -1,12 +1,11 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
-import GlobalStyle from '../styles/GlobalStyle';
+import { TextInput, StyleSheet } from 'react-native';
 import MyTheme from '../styles/MyTheme';
 
 export function MyInput(props) {
     return (
         <TextInput 
-            style={GlobalStyle.inputLogin}
+            style={styles.input}
             placeholder={props.placeholder}
             placeholderTextColor={MyTheme.colors.gray2}
             onChangeText={props.onChangeText}
@@ -14,3 +13,15 @@ export function MyInput(props) {
         />
     );
 }
+
+const styles = StyleSheet.create({
+    input: {
+        height: 45,
+        width: '70%',
+        margin: 10,
+        borderRadius: 10,
+        paddingLeft: 20,
+        fontSize: 18,
+        backgroundColor: MyTheme.colors.white,
+    },
+});

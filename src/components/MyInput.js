@@ -8,6 +8,7 @@ export function MyInput(props) {
             style={styles.input}
             placeholder={props.placeholder}
             placeholderTextColor={MyTheme.colors.gray2}
+            secureTextEntry={props.secureTextEntry}
             onChangeText={props.onChangeText}
             value={props.value}
         />

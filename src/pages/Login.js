@@ -1,69 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, Image, Alert, Keyboard } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, Alert, Keyboard, ActivityIndicator } from 'react-native';
 import GlobalStyle from '../styles/GlobalStyle';
+import MyTheme from '../styles/MyTheme';
 import { MyInput } from '../components/MyInput';
 import { MyBtn } from '../components/MyBtn';
-import Api from '../services/Api';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { BtnGoogle } from '../components/BtnGoogle';
+import { useAuth } from '../contexts/Auth';
 
 export function Login( { navigation } ) {
 
-    const keyAsyncStorage = "@ifrndo:login";
-
     const [matricula, setMatricula] = useState('');
     const [senha, setSenha] = useState('');
+    const {handleSignWithSuap, handleSignWithGoogle} = useAuth();
+    const [isLoading, setIsLoading] = useState(false);
 
-    async function loginAutetication() {
+    async function loginSuap() {
+
+        Keyboard.dismiss();
+
+        if (!matricula || !senha) {
+            Alert.alert("Informe todos os dados");
+        }
 
         try {
-            const retorno = await AsyncStorage.getItem(keyAsyncStorage);
-            const parseJson = JSON.parse(retorno);
-
-            token = (parseJson || '');
-
-            await Api.get('minhas-informacoes/meus-dados/',{
-                headers: {
-                    'authorization': 'jwt ' + token,
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            navigation.navigate('Home');
+            setIsLoading(true);
+            return await handleSignWithSuap(matricula, senha);
         } catch(error) {
-            console.log("Login");
+            setIsLoading(false);
+            console.log(error);
         }
     }
 
-    async function handleLogin() {
-        var params = new URLSearchParams();
-        params.append('username', matricula);
-        params.append('password', senha);
-
+    async function loginGoogle() {
         try {
-            responseToken = await Api.post('autenticacao/token/', params);
-            const {token} = responseToken.data;
-
-            await AsyncStorage.setItem(keyAsyncStorage, JSON.stringify(token));
-
-            setMatricula('');
-            setSenha('');
-            Keyboard.dismiss()
-
-            loginAutetication();
-
+            setIsLoading(true);
+            return await handleSignWithGoogle();
         } catch(error) {
-            Alert.alert("Erro na Autenticação");
+            setIsLoading(false);
+            console.log(error);
         }
     }
 
-    async function clear() {
-        await AsyncStorage.clear();
+    if (isLoading) {
+        return (
+            <View style={GlobalStyle.actInd}>
+                <ActivityIndicator size="large" color={MyTheme.colors.primary} />
+            </View>
+        )
     }
-
-    useEffect( ()=> {
-        loginAutetication();
-    }, []);
 
     return (
         <View style={GlobalStyle.containerLogin}>
@@ -73,7 +57,9 @@ export function Login( { navigation } ) {
             <MyInput placeholder="Matricula" value={matricula} onChangeText={setMatricula} />
             <MyInput placeholder="Senha" secureTextEntry={true} value={senha} onChangeText={setSenha} />
 
-            <MyBtn text="Entrar" onPress={ () => handleLogin() } />
+            <MyBtn text="Entrar" onPress={ loginSuap } />
+
+            <BtnGoogle text="Login com Google" onPress={ loginGoogle } />
         </View>
     )
 }

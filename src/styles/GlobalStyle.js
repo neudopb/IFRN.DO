@@ -54,4 +54,9 @@ export default StyleSheet.create({
         fontSize: 16,
         color: MyTheme.colors.white,
     },
+    actInd: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 });

@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         height: 50,
         width: '70%',
         margin: 20,
-        borderRadius: 3,
+        borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: MyTheme.colors.gray
